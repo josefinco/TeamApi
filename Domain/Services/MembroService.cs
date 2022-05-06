@@ -6,13 +6,13 @@ using TeamApi.Models;
 
 namespace TeamApi.Services
 {
-    public class MongoDBService
+    public class MembroService
     {
 
 
         private readonly IMongoCollection<Membro> _membrolistCollection;
 
-        public MongoDBService(IOptions<MongoDBSettings> mongoDBSettings)
+        public MembroService(IOptions<MongoDBSettings> mongoDBSettings)
         {
 
             MongoClient client = new MongoClient(mongoDBSettings.Value.ConnectionString);
