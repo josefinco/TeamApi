@@ -2,12 +2,12 @@
 
 Projeto para estudo:
 
-Database noSQL  (MongoDB)
-Padrão de projeto DDD - WIP
-Autenticação e Autorização por JWT - WIP
-Docker - TO-DO
-Docker Compose - TO-DO
-Testes de Carga (K6) TO-DO
+Database noSQL  (MongoDB)  
+Padrão de projeto DDD - WIP  
+Autenticação e Autorização por JWT - WIP  
+Docker - TO-DO  
+Docker Compose - TO-DO  
+Testes de Carga (K6) TO-DO  
 
 ### Mongo on Docker 
 
