@@ -3,7 +3,7 @@ using TeamApi.Services;
 using Domain.Models;
 using Domain.Repositories;
 using Domain.Services;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace TeamApi.Controllers
 {
@@ -13,17 +13,18 @@ namespace TeamApi.Controllers
     public class UsuarioController : Controller
     {
 
-        private readonly UsuarioService _mongoDBService;
+        private readonly UsuarioService _usuarioService;
 
 
         public UsuarioController(UsuarioService mongoDBService)
         {
-            _mongoDBService = mongoDBService;
+            _usuarioService = mongoDBService;
         }
 
 
         [HttpPost]
         [Route("login")]
+        [AllowAnonymous]
 
         public async Task<ActionResult<dynamic>> Authenticate([FromBody] Usuario model)
         {
@@ -50,18 +51,20 @@ namespace TeamApi.Controllers
 
         [HttpGet]
         [Route("getusuario")]
+        [AllowAnonymous]
         public async Task<Usuario> Get(string usuario)
         {
             if (string.IsNullOrEmpty(usuario)) return null;
-            return await _mongoDBService.GetAsync(usuario);
+            return await _usuarioService.GetAsync(usuario);
         }
 
 
         [HttpPost]
         [Route("createUsuario")]
+        [AllowAnonymous]
         public async Task<IActionResult> Post([FromBody] Usuario usuario)
         {
-            await _mongoDBService.CreateAsync(usuario);
+            await _usuarioService.CreateAsync(usuario);
 
             return CreatedAtAction(nameof(Get), new { id = usuario.Id }, usuario);
         }
